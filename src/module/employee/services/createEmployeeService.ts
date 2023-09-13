@@ -1,6 +1,6 @@
 import Employee from "../typeorm/entities/entity";
-
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
+import { apiError } from "../../../shared/helpers/apiErrors";
 
 
 
@@ -19,7 +19,7 @@ export default class CreateEmployeeService {
     email,
     password,
   }: EmployeeType): Promise<Employee> {
-    const employeeRepository = appDataSource.getRepository(Employee);
+    const   employeeRepository = appDataSource.getRepository(Employee);
     const employeeEmailExist =  employeeRepository.findOne({
       where: {
         name,
@@ -27,7 +27,7 @@ export default class CreateEmployeeService {
     });
 
     if (await employeeEmailExist) {
-      throw Error("ja existe alguem com esse nome");
+      throw new apiError("ja existe alguem com esse email", 500);
     }
 
     const employee = employeeRepository.create({

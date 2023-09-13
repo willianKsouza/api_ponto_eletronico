@@ -5,7 +5,8 @@ import EmployeesController from "../controllers/employeeController";
 
 const employeesController = new EmployeesController()
 
-
+employeesRouter.get("/", employeesController.list);
 employeesRouter.post('/', employeesController.create);
+employeesRouter.put('/:id', employeesController.update);
 
 export default employeesRouter
