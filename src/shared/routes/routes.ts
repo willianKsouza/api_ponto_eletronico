@@ -1,9 +1,10 @@
 import { Router } from "express";
 import employeesRouter from "../../module/employee/routes/route";
+import loginRouter from "../../module/login/routes/route";
 
 const routes = Router()
 
 routes.use('/employee', employeesRouter)
-// routes.use('/login', loginRouter)
+routes.use('/login', loginRouter)
 
 export default routes

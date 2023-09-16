@@ -1,6 +1,6 @@
 import { apiError } from "../../../shared/helpers/apiErrors";
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
-import Employee from "../typeorm/entities/entity";
+import Employee from "../../../shared/typeorm/entities/entity";
 
 export class ListEmployeesService {
     async action() {

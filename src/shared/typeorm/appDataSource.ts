@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import Employee from "../../module/employee/typeorm/entities/entity";
+import Employee from "./entities/entity";
 
 
 export const appDataSource = new DataSource({
@@ -10,9 +10,9 @@ export const appDataSource = new DataSource({
   username: "root",
   password: "rugal123",
   database: "ponto_eletronico",
-  entities: [Employee],
+  entities:[Employee],
   synchronize: true,
-  logging: ["error"],
+  logging: "all",
 });
 
 appDataSource

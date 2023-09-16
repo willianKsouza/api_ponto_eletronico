@@ -1,4 +1,4 @@
-import Employee from "../typeorm/entities/entity";
+import Employee from "../../../shared/typeorm/entities/entity";
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
 import { apiError } from "../../../shared/helpers/apiErrors";
 

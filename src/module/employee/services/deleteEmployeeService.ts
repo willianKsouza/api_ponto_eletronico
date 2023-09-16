@@ -7,18 +7,14 @@ interface EmployeeTypeId {
   id_user: number;
 }
 
-export class GetEmployeesService {
+export class DeleteEmployeesService {
   async action({ id_user }: EmployeeTypeId) {
     const employeesRepository = appDataSource.getRepository(Employee);
-    const employees = await employeesRepository.findOne({
-      where: {
-        id: id_user,
-      },
-    });
+    const employee = await employeesRepository.delete(id_user);
 
-    if (!employees) {
+    if (!employee) {
       throw new apiError("funcionario nao encontrado", 404);
     }
-    return employees;
+    return employee;
   }
 }
