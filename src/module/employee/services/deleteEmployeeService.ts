@@ -1,6 +1,6 @@
 import { apiError } from "../../../shared/helpers/apiErrors";
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
-import Employee from "../../../shared/typeorm/entities/entity";
+import Employee from "../../../shared/typeorm/entities/employee/employeeEntity";
 
 
 interface EmployeeTypeId {
@@ -12,9 +12,8 @@ export class DeleteEmployeesService {
     const employeesRepository = appDataSource.getRepository(Employee);
     const employee = await employeesRepository.delete(id_user);
 
-    if (!employee) {
+    if (!employee)
       throw new apiError("funcionario nao encontrado", 404);
-    }
     return employee;
   }
 }

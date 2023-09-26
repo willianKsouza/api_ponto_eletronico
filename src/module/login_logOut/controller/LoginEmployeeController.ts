@@ -9,4 +9,6 @@ export class LoginEmployeeController {
     const loginEmployee = await LoginService.action({ email, password });
     return res.json(loginEmployee);
   }
+
+  async logOut(){}
 }

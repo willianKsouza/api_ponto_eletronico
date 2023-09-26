@@ -1,6 +1,6 @@
 import { apiError } from "../../../shared/helpers/apiErrors";
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
-import Employee from "../../../shared/typeorm/entities/entity";
+import Employee from "../../../shared/typeorm/entities/employee/employeeEntity";
 
 
 interface EmployeeTypeId {
@@ -16,9 +16,8 @@ export class GetEmployeesService {
       },
     });
 
-    if (!employees) {
+    if (!employees) 
       throw new apiError("funcionario nao encontrado", 404);
-    }
     return employees;
   }
 }

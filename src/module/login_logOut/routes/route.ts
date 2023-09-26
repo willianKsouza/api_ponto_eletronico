@@ -5,6 +5,6 @@ import { LoginEmployeeController } from "../controller/LoginEmployeeController";
 
 const loginEmployeeController = new LoginEmployeeController()
 
-loginRouter.get("/", loginEmployeeController.login);
+loginRouter.post("/", loginEmployeeController.login);
 
 export default loginRouter

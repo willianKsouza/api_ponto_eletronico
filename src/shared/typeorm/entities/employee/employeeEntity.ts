@@ -2,12 +2,15 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedCol
 
 @Entity("employee")
 export default class Employee {
+  
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
   name: string;
   @Column()
   function_employee: string;
+  @Column()
+  workload: number;
   @Column()
   email: string;
   @Column()

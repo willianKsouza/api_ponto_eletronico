@@ -18,7 +18,10 @@ app.use(errorMiddleware)
 
 
 
-app.listen(3001)
+app.listen(3001, () => {
+  console.log('a');
+  
+})
 
 
 

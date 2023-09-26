@@ -1,6 +1,7 @@
 import "reflect-metadata";
-import { DataSource } from "typeorm";
-import Employee from "./entities/entity";
+import { DataSource,  } from "typeorm";
+import Employee from "./entities/employee/employeeEntity";
+import Timesheet from "./entities/timeSheet/timeSheetEntity";
 
 
 export const appDataSource = new DataSource({
@@ -10,7 +11,7 @@ export const appDataSource = new DataSource({
   username: "root",
   password: "rugal123",
   database: "ponto_eletronico",
-  entities:[Employee],
+  entities: [Employee, Timesheet],
   synchronize: true,
   logging: "all",
 });
