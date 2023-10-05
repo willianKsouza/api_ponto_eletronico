@@ -7,12 +7,18 @@ import { DeleteEmployeesService } from "../services/deleteEmployeeService";
 
 export default class EmployeesController {
   async create(req: Request, res: Response): Promise<Response> {
-    const { name, function_employee, workload, email, password } = req.body;
+    const {
+      name_employee,
+      function_employee,
+      workload_employee,
+      email,
+      password,
+    } = req.body;
     const employeeService = new CreateEmployeeService();
     const employee = await employeeService.action({
-      name,
+      name_employee,
       function_employee,
-      workload,
+      workload_employee,
       email,
       password,
     });
@@ -20,15 +26,16 @@ export default class EmployeesController {
   }
 
   async update(req: Request, res: Response) {
-    const { name, function_employee, workload, email } = req.body;
+    const { name_employee, function_employee, workload_employee, email } =
+      req.body;
     const { id } = req.params;
     const id_user = Number(id);
     const employeeService = new UpdateEmployeeService();
     const employee = await employeeService.action({
       id_user,
-      name,
+      name_employee,
       function_employee,
-      workload,
+      workload_employee,
       email,
     });
     return res.status(201).json(employee);

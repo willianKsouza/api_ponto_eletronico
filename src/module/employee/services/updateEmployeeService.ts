@@ -4,35 +4,35 @@ import Employee from "../../../shared/typeorm/entities/employee/employeeEntity";
 
 interface EmployeeType {
   id_user: number;
-  name: string;
+  name_employee: string;
   function_employee: string;
-  workload: number;
+  workload_employee: number;
   email: string;
 }
 export class UpdateEmployeeService {
   async action({
     id_user,
-    name,
+    name_employee,
     function_employee,
-    workload,
+    workload_employee,
     email,
   }: EmployeeType) {
     const employeeRepository = appDataSource.getRepository(Employee);
     const employee = await employeeRepository.findOne({
       where: {
-        id: id_user,
-      }
+        employee_id: id_user,
+      },
     });
     if (!employee) throw new apiError("erro ao atualizar", 404);
 
     employeeRepository.update(
       {
-        id: id_user,
+        employee_id: id_user,
       },
       {
-        name,
+        name_employee,
         function_employee,
-        workload,
+        workload_employee,
         email,
       }
     );

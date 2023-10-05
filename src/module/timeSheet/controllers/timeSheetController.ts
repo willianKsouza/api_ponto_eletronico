@@ -3,11 +3,12 @@ import { CreateMarkSheetService } from "../services/CreateMarkSheetService";
 
 export class TimeSheetController {
   async sheetMarking(req: Request, res: Response) {
-    const { currentTime, id, typeMarking, workload } = req.body;
+    const { currentTimeStamp, id, idSheet, typeMarking, workload } = req.body;
     const timeSheetService = new CreateMarkSheetService();
     const timeSheet = await timeSheetService.action({
-      currentTime,
+      currentTimeStamp,
       id,
+      idSheet,
       typeMarking,
       workload,
     });

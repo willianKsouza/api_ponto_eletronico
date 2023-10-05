@@ -4,25 +4,25 @@ import { apiError } from "../../../shared/helpers/apiErrors";
 
 
 interface EmployeeType {
-  name: string;
+  name_employee: string;
   function_employee: string;
-  workload: number
+  workload_employee: number;
   email: string;
   password: string;
 }
 
 export default class CreateEmployeeService {
   async action({
-    name,
+    name_employee,
     function_employee,
-    workload,
+    workload_employee,
     email,
     password,
   }: EmployeeType): Promise<Employee> {
-    const   employeeRepository = appDataSource.getRepository(Employee);
-    const employeeEmailExist =  employeeRepository.findOne({
+    const employeeRepository = appDataSource.getRepository(Employee);
+    const employeeEmailExist = employeeRepository.findOne({
       where: {
-        name,
+        name_employee,
       },
     });
 
@@ -30,9 +30,9 @@ export default class CreateEmployeeService {
       throw new apiError("ja existe alguem com esse email", 500);
 
     const employee = employeeRepository.create({
-      name,
+      name_employee,
       function_employee,
-      workload,
+      workload_employee,
       email,
       password,
     });

@@ -4,13 +4,16 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --dataSource /home/willian-ubuntu/projetos/api_ponto_eletronico/src/shared/typeorm/appDataSource.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.3",
+    "@types/mime-types": "^2.1.2",
+    "@types/multer": "^1.4.8",
     "@types/node": "^20.5.7",
     "eslint": "^8.48.0",
     "nodemon": "^3.0.1",
@@ -27,8 +30,11 @@
     "express-async-errors": "^3.1.1",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
+    "mime-types": "^2.1.35",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.6.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"
+    
   }
 }

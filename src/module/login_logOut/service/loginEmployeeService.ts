@@ -1,7 +1,7 @@
 import { apiError } from "../../../shared/helpers/apiErrors";
 import { appDataSource } from "../../../shared/typeorm/appDataSource";
 import Employee from "../../../shared/typeorm/entities/employee/employeeEntity";
-import { sign } from "jsonwebtoken";
+import { sign  } from "jsonwebtoken";
 
 interface EmployeeType {
   email: string;
@@ -28,7 +28,7 @@ export class LoginEmployeeService {
     
     if (!employee) throw new apiError("login nao encontrado", 403);
 
-    const token = sign({ employee_id: employee.id }, SECRET, {
+    const token = sign({ employee_id: employee.employee_id }, SECRET, {
       expiresIn: '1h', 
     });
   

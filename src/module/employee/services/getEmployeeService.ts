@@ -12,7 +12,7 @@ export class GetEmployeesService {
     const employeesRepository = appDataSource.getRepository(Employee);
     const employees = await employeesRepository.findOne({
       where: {
-        id: id_user,
+        employee_id: id_user,
       },
     });
 

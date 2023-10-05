@@ -1,6 +1,7 @@
 import { Router } from "express";
 import EmployeesController from "../controllers/employeeController";
 import { isAuth } from "../../../shared/middlewares/isAuth";
+import { uploads } from "../../../shared/middlewares/uploads";
  const employeesRouter = Router();
 
 
@@ -10,4 +11,5 @@ employeesRouter.put("/:id", employeesController.update);
 employeesRouter.get("/:id", employeesController.read);
 employeesRouter.get("/", employeesController.list);
 employeesRouter.delete("/:id", isAuth, employeesController.delete);
+
 export default employeesRouter

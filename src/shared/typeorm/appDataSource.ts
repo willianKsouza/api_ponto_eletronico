@@ -5,6 +5,7 @@ import Timesheet from "./entities/timeSheet/timeSheetEntity";
 
 
 export const appDataSource = new DataSource({
+  migrationsTableName:"migrations",
   type: "mysql",
   host: "localhost",
   port: 3308,
@@ -12,6 +13,7 @@ export const appDataSource = new DataSource({
   password: "rugal123",
   database: "ponto_eletronico",
   entities: [Employee, Timesheet],
+  migrations:[`${__dirname}/migrations/**/*.ts`],
   synchronize: true,
   logging: "all",
 });
@@ -21,6 +23,6 @@ appDataSource
   .then(() => {
     console.log("conexao feita com sucesso");
   })
-  .catch((err) => {
-    console.log(`deu erro ${console.log(err)}`);
-  });
+  .catch(() => console.log(`deu erro`)
+);
+  

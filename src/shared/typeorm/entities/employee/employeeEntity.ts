@@ -1,24 +1,34 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity("employee")
+@Entity("employees")
 export default class Employee {
-  
   @PrimaryGeneratedColumn()
-  id: number;
+  employee_id: number;
+
   @Column()
-  name: string;
+  name_employee: string;
+
+  @Column({ nullable: true })
+  avatar_employee: string;
+
   @Column()
   function_employee: string;
+
   @Column()
-  workload: number;
+  workload_employee: number;
+
   @Column()
   email: string;
+
   @Column()
   password: string;
+
   @CreateDateColumn()
   created_at: Date;
+
   @UpdateDateColumn()
   Updated_at: Date;
+
   @DeleteDateColumn({ nullable: true })
   deleted_at: Date;
 }
