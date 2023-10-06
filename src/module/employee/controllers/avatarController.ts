@@ -1,18 +1,30 @@
 import { Request, Response } from "express";
 import { apiError } from "../../../shared/helpers/apiErrors";
+import { supabaseStorage } from "../../../shared/utils/uploadSupaBase.utils";
 
 export class AvatarController {
-    uploadAvatar(req :Request, res: Response) {
-        if (req.file) {
-           return res.json({
-             error: false,
-             message: "upload feito com sucesso",
-           });
-        }
+  async uploadAvatar(req: Request, res: Response) {
+    console.log(req.file?.mimetype);
 
-       return res.json({
-          error: new apiError("ocorreu um erro", 500),
-          message: "ocorreu um erro",
+    if (req.file) {
+      const { data, error } = await supabaseStorage.storage
+        .from("avatars")
+        .upload(req.file.filename, req.file, {
+          contentType: req.file?.mimetype,
         });
+      
+      return res.json({ data });
+      // if (data) {
+      //   console.log("deu bom" + data.path);
+      //   res.json({ f: true })
+
+      // } else {
+      //   console.log("deu ruim" + error.name);
+      //   console.log("deu ruim" + error.stack);
+      //   console.log("deu ruim" + error.message);
+      // }
+    } else {
+      console.log("deu erro");
     }
+  }
 }
