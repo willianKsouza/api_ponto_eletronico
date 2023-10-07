@@ -1,4 +1,5 @@
-import "dotenv/config";
+
+import process from "process";
 import express from "express";
 import "express-async-errors";
 import "reflect-metadata";
@@ -16,7 +17,6 @@ app.use("*", (req: Request, res: Response, next: NextFunction) => {
   next(err);
 });
 app.use(errorMiddleware);
-
 app.listen(3001, () => {
-  console.log("a");
+  console.log('server on');
 });

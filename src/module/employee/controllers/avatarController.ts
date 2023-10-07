@@ -1,30 +1,35 @@
 import { Request, Response } from "express";
 import { apiError } from "../../../shared/helpers/apiErrors";
 import { supabaseStorage } from "../../../shared/utils/uploadSupaBase.utils";
+import path from "path";
+
 
 export class AvatarController {
   async uploadAvatar(req: Request, res: Response) {
-    console.log(req.file?.mimetype);
-
-    if (req.file) {
-      const { data, error } = await supabaseStorage.storage
-        .from("avatars")
-        .upload(req.file.filename, req.file, {
-          contentType: req.file?.mimetype,
-        });
+    const uploadFolder = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "..",
+      "uploads"
+    );
+   
       
-      return res.json({ data });
-      // if (data) {
-      //   console.log("deu bom" + data.path);
-      //   res.json({ f: true })
+    // const caminhoDaImagem = `${uploadFolder}/cachoeira.jpeg`;
 
-      // } else {
-      //   console.log("deu ruim" + error.name);
-      //   console.log("deu ruim" + error.stack);
-      //   console.log("deu ruim" + error.message);
-      // }
+  const { data, error } = await supabaseStorage.storage
+    .from("avatars")
+    .upload(`${req.file?.filename}`,req.file, {
+      contentType:"image/jpeg"
+    });
+    
+    if (data) {
+        return res.json({ data });
     } else {
-      console.log("deu erro");
-    }
+     return res.json({ error });
+      }
+
   }
+
 }
